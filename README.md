@@ -1,7 +1,6 @@
 # TerraBase
-Dit is een test
-===============
 
-* Geen idee of dit werkt
-* denk het wel.
-* Ik denk het ook!
+Welcome to TerraBase
+
+* [x] Setup Github account
+* [ ] Write content
