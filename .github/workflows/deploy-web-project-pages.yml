@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'web-project/src/**'
+      - 'index.html'
       - '.github/workflows/deploy-web-project-pages.yml'
   workflow_dispatch:
 
@@ -34,7 +34,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: web-project/src
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
