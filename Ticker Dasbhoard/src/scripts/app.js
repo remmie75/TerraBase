@@ -24,6 +24,15 @@ const newsFeedUrls = [
 ];
 
 const topics = {
+    sports: {
+        name: "Sports",
+        subtitle: "Live sports headlines, scores, and major tournament updates",
+        tickerLabel: "Sports Headlines",
+        ariaLabel: "Sports headlines",
+        imageFallbackText: "Sports",
+        emptyText: "No fresh sports headlines are available right now.",
+        keywords: ["sports", "football", "soccer", "nba", "nfl", "mlb", "tennis", "formula 1", "olympics", "cricket"]
+    },
     "middle-east": {
         name: "Middle East",
         subtitle: "Live geopolitical and security headlines from the region",
@@ -73,7 +82,7 @@ const topics = {
 
 let syncedUtcMs = Date.now();
 let syncAtClientMs = Date.now();
-let activeTopicKey = "middle-east";
+let activeTopicKey = "sports";
 
 async function fetchInternetUtcMs() {
     const primaryUrl = "https://worldtimeapi.org/api/timezone/Etc/UTC";
@@ -267,7 +276,7 @@ async function fetchHeadlinesFromFeed(feedUrl) {
 }
 
 async function refreshHeadlinesTicker() {
-    const topic = topics[activeTopicKey] || topics["middle-east"];
+    const topic = topics[activeTopicKey] || topics.sports;
 
     try {
         const feedResults = await Promise.all(newsFeedUrls.map((feedUrl) => fetchHeadlinesFromFeed(feedUrl)));
