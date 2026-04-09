@@ -7,21 +7,54 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-slate-200 via-sky-50 to-emerald-50 p-6 text-slate-800 grid place-items-center">
-  <main class="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10">
-    <h1 class="mb-3 text-3xl font-bold leading-tight sm:text-4xl">Hello from your basic webpage</h1>
-    <p class="mb-5 text-base leading-7 text-slate-600">This is a simple starter page with HTML, Tailwind CSS, and a tiny bit of JavaScript.</p>
+  <main class="w-full max-w-3xl rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10">
+    <h1 class="mb-3 text-3xl font-bold leading-tight sm:text-4xl">Amsterdam API OpenAPI Loader</h1>
+    <p class="mb-5 text-base leading-7 text-slate-600">This page fetches and shows metadata from the requested OpenAPI endpoint.</p>
 
-    <button id="helloButton" type="button" class="rounded-xl bg-teal-700 px-4 py-2.5 text-base font-medium text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2">Click me</button>
-    <p id="message" class="mt-4 font-semibold text-teal-800"></p>
+    <div class="mb-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700 break-all" id="apiUrl">URL: https://api.data.amsterdam.nl/v1/aardgasverbruik/openapi.json</div>
+    <button id="loadSpecButton" type="button" class="rounded-xl bg-teal-700 px-4 py-2.5 text-base font-medium text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2">Load OpenAPI Spec</button>
+    <p id="statusMessage" class="mt-4 font-semibold text-slate-700"></p>
+    <pre id="result" class="mt-4 max-h-80 overflow-auto rounded-xl bg-slate-900 p-4 text-xs leading-6 text-slate-100"></pre>
   </main>
 
   <script>
-    const button = document.getElementById("helloButton");
-    const message = document.getElementById("message");
+    const OPENAPI_URL = "https://api.data.amsterdam.nl/v1/aardgasverbruik/openapi.json";
+    const button = document.getElementById("loadSpecButton");
+    const statusMessage = document.getElementById("statusMessage");
+    const result = document.getElementById("result");
 
-    button.addEventListener("click", () => {
-      message.textContent = "Nice! Your webpage is interactive.";
-    });
+    async function loadOpenApiSpec() {
+      statusMessage.textContent = "Loading...";
+      statusMessage.className = "mt-4 font-semibold text-slate-700";
+      result.textContent = "";
+
+      try {
+        const response = await fetch(OPENAPI_URL);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status} ${response.statusText}`);
+        }
+
+        const spec = await response.json();
+        const summary = {
+          title: spec.info?.title ?? "Unknown",
+          version: spec.info?.version ?? "Unknown",
+          description: spec.info?.description ?? "",
+          numberOfPaths: spec.paths ? Object.keys(spec.paths).length : 0,
+          samplePaths: spec.paths ? Object.keys(spec.paths).slice(0, 10) : []
+        };
+
+        statusMessage.textContent = "OpenAPI spec loaded successfully.";
+        statusMessage.className = "mt-4 font-semibold text-emerald-700";
+        result.textContent = JSON.stringify(summary, null, 2);
+      } catch (error) {
+        statusMessage.textContent = "Failed to load OpenAPI spec.";
+        statusMessage.className = "mt-4 font-semibold text-rose-700";
+        result.textContent = `Could not fetch: ${OPENAPI_URL}\n${error.message}`;
+      }
+    }
+
+    button.addEventListener("click", loadOpenApiSpec);
   </script>
 </body>
 </html>
