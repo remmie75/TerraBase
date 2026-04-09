@@ -4,77 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Basic Webpage</title>
-  <style>
-    :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --accent: #0f766e;
-      --accent-hover: #115e59;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(160deg, #e7eef8 0%, #f5faf7 100%);
-      color: var(--text);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    main {
-      width: min(700px, 100%);
-      background: var(--card);
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
-    }
-
-    h1 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-    }
-
-    p {
-      margin: 0 0 16px;
-      line-height: 1.6;
-    }
-
-    button {
-      border: 0;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      padding: 10px 16px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    button:hover {
-      background: var(--accent-hover);
-    }
-
-    #message {
-      margin-top: 14px;
-      font-weight: 600;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <main>
-    <h1>Hello from your basic webpage</h1>
-    <p>This is a simple starter page with HTML, CSS, and a tiny bit of JavaScript.</p>
+<body class="min-h-screen bg-gradient-to-br from-slate-200 via-sky-50 to-emerald-50 p-6 text-slate-800 grid place-items-center">
+  <main class="w-full max-w-2xl rounded-2xl bg-white p-8 shadow-xl shadow-slate-900/10">
+    <h1 class="mb-3 text-3xl font-bold leading-tight sm:text-4xl">Hello from your basic webpage</h1>
+    <p class="mb-5 text-base leading-7 text-slate-600">This is a simple starter page with HTML, Tailwind CSS, and a tiny bit of JavaScript.</p>
 
-    <button id="helloButton" type="button">Click me</button>
-    <p id="message"></p>
+    <button id="helloButton" type="button" class="rounded-xl bg-teal-700 px-4 py-2.5 text-base font-medium text-white transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2">Click me</button>
+    <p id="message" class="mt-4 font-semibold text-teal-800"></p>
   </main>
 
   <script>
