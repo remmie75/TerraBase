@@ -32,51 +32,6 @@ const topics = {
         imageFallbackText: "Sports",
         emptyText: "No fresh sports headlines are available right now.",
         keywords: ["sports", "football", "soccer", "nba", "nfl", "mlb", "tennis", "formula 1", "olympics", "cricket"]
-    },
-    "middle-east": {
-        name: "Middle East",
-        subtitle: "Live geopolitical and security headlines from the region",
-        tickerLabel: "Middle East Headlines",
-        ariaLabel: "Middle East headlines",
-        imageFallbackText: "Middle East",
-        emptyText: "No fresh Middle East headlines are available right now.",
-        keywords: ["middle east", "iran", "israel", "gaza", "lebanon", "syria", "hamas", "hezbollah"]
-    },
-    energy: {
-        name: "Energy Markets",
-        subtitle: "Oil, gas, and power market developments around the world",
-        tickerLabel: "Energy Market Headlines",
-        ariaLabel: "Energy market headlines",
-        imageFallbackText: "Energy",
-        emptyText: "No fresh energy market headlines are available right now.",
-        keywords: ["oil", "gas", "energy", "opec", "brent", "wti", "power grid", "renewables"]
-    },
-    technology: {
-        name: "Technology",
-        subtitle: "Major tech stories including AI, chips, and cybersecurity",
-        tickerLabel: "Technology Headlines",
-        ariaLabel: "Technology headlines",
-        imageFallbackText: "Tech",
-        emptyText: "No fresh technology headlines are available right now.",
-        keywords: ["technology", "tech", "ai", "artificial intelligence", "chip", "semiconductor", "cyber", "software"]
-    },
-    "global-economy": {
-        name: "Global Economy",
-        subtitle: "Inflation, central banks, trade, and macroeconomic shifts",
-        tickerLabel: "Global Economy Headlines",
-        ariaLabel: "Global economy headlines",
-        imageFallbackText: "Economy",
-        emptyText: "No fresh global economy headlines are available right now.",
-        keywords: ["economy", "inflation", "interest rate", "fed", "ecb", "trade", "gdp", "recession"]
-    },
-    climate: {
-        name: "Climate",
-        subtitle: "Climate policy, weather extremes, and environmental change",
-        tickerLabel: "Climate Headlines",
-        ariaLabel: "Climate headlines",
-        imageFallbackText: "Climate",
-        emptyText: "No fresh climate headlines are available right now.",
-        keywords: ["climate", "weather", "flood", "wildfire", "emissions", "cop", "drought", "warming"]
     }
 };
 
